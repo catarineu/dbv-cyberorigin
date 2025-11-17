@@ -1,0 +1,3 @@
+-- Auto-generated SQL script. Actual values for binary/complex data types may differ - what you see is the default string representation of values.
+-- INSERT INTO public.cyber_id_white_list (optlock,cyber_id)
+--	(SELECT DISTINCT 0, LEFT(cyber_id,20) FROM cyber_id ci WHERE cyber_id ~ 'CYR01-22-0642');
