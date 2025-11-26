@@ -31,7 +31,26 @@ SELECT
 --                                  cust, brand, type, begin?, end?,  cyber_ids? by_year?
 SELECT * FROM get_stats_origin('01115', NULL, NULL, NULL, NULL, TRUE, TRUE);
 
-SELECT * FROM get_stats_origin(NULL, NULL, NULL, NULL, NULL, FALSE, TRUE);
+-- get_new_stats_detail(p_diamanter, p_customer, p_brand, p_type, p_begin, p_end, 
+-- p_only_nfts, p_by_year, p_by_origins, p_with_cyber_ids)
+SELECT YEAR, workflow_id, workflow_name, customer_extid, customer_namets, brand_extid, brand_namets, lots_sum, pieces_sum, carats_sum
+FROM get_new_stats_detail(NULL, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
+ORDER BY YEAR DESC, carats_sum DESC NULLS LAST; 
+
+SELECT YEAR, customer_extid AS "Customer", customer_namets AS "Cust. Name", brand_extid AS brand, brand_namets AS "Brand Name",  substring(workflow_id,12) || ' - ' || workflow_name AS blockchain, 
+		sum(carats_sum) AS Carats, sum(lots_sum) AS Lots, sum(pieces_sum) AS Pieces 
+FROM get_new_stats_detail(NULL, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
+GROUP BY YEAR, workflow_id, workflow_name, customer_extid, customer_namets, brand_extid, brand_namets
+ORDER BY YEAR DESC, Carats DESC NULLS LAST; 
+
+
+SELECT YEAR, customer_extid AS "Customer", customer_namets AS "Cust. Name", brand_extid AS brand, brand_namets AS "Brand Name", sum(carats_sum) AS Carats, sum(lots_sum) AS Lots, sum(pieces_sum) AS Pieces 
+FROM get_new_stats_detail(NULL, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
+GROUP BY YEAR, customer_extid, customer_namets, brand_extid, brand_namets
+ORDER BY YEAR DESC, Carats DESC NULLS LAST; 
+
+
+WHERE YEAR='2025'; 
 
 SELECT * FROM get_stats_origin(NULL, NULL, NULL, NULL, NULL, FALSE, TRUE)
   WHERE (cust='01092' OR brand='01092')

@@ -11,7 +11,7 @@ SELECT api_name, deleted, cancelled, cyber_id, cyber_id_group_id FROM cyber_id  
 SELECT superseded, cyber_id, cyber_id_group  FROM product_search_index psi WHERE cyber_id ~${cyber} ORDER BY id desc;
 
 -- CYR01-23-0661-289946
-@set cyber = 'CYR01-22-0556-204036'
+@set cyber = '25-0122-366280'
 
 -- register_log: Últims STEPS. Principalment per veure darrers ERRORS de pas.
 	SELECT rl.id, blockchain, rl.timestamp, rl.step, rl.activity_name, -- api || ' v' || api_version AS api, blockchain,
@@ -22,7 +22,7 @@ SELECT superseded, cyber_id, cyber_id_group  FROM product_search_index psi WHERE
 	    COALESCE(LEFT((xpath('//faultstring/text()'::text, rl.xml_response::xml))[1]::TEXT,200),'') AS message,
 	    LEFT((xpath('//errorCode/text()'::text, rl.xml_response::xml))[1]::TEXT,40) AS errorcode,
 	 	rl.timestamp_response - rl.timestamp_request AS wait_time
---	    ,xml_response, xml_requests
+	    ,xml_response, xml_request
 	 FROM register_log rl
 	     LEFT OUTER JOIN cyber_id ci ON (rl.lot_id_out=ci.cyber_id)
 --	WHERE blockchain IN ('Blockchain-10','Blockchain-20')
