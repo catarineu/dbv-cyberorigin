@@ -1,8 +1,9 @@
 {
 	"folders": {
 		"RDS Ubiquat": {},
-		"CyberOrigin": {},
+		"CyberTrace": {},
 		"ERGil": {},
+		"CyberTrace-Portal": {},
 		"Vilawatt - Test": {
 			"parent": "RDS Ubiquat"
 		},
@@ -446,7 +447,7 @@
 			"driver": "postgres-jdbc",
 			"name": "CyberOrigin DEVEL",
 			"save-password": true,
-			"folder": "CyberOrigin",
+			"folder": "CyberTrace",
 			"configuration": {
 				"host": "devel-rds.cy8ityhaiz7t.eu-central-2.rds.amazonaws.com",
 				"port": "5432",
@@ -510,15 +511,14 @@
 			"driver": "postgres-jdbc",
 			"name": "CyberOrigin PROD",
 			"save-password": true,
-			"read-only": true,
-			"folder": "CyberOrigin",
+			"folder": "CyberTrace",
 			"configuration": {
 				"host": "prod-rds.cy8ityhaiz7t.eu-central-2.rds.amazonaws.com",
 				"port": "5432",
 				"database": "prod_cobchain",
 				"url": "jdbc:postgresql://prod-rds.cy8ityhaiz7t.eu-central-2.rds.amazonaws.com:5432/prod_cobchain",
 				"configurationType": "MANUAL",
-				"home": "/opt/homebrew/Cellar/libpq/17.5",
+				"home": "/opt/homebrew/Cellar/libpq/17.6",
 				"type": "prod",
 				"keepAlive": 60,
 				"closeIdleConnection": false,
@@ -578,7 +578,7 @@
 			"driver": "postgres-jdbc",
 			"name": "CyberOrigin STAGING",
 			"save-password": true,
-			"folder": "CyberOrigin",
+			"folder": "CyberTrace",
 			"configuration": {
 				"host": "staging-rds.cy8ityhaiz7t.eu-central-2.rds.amazonaws.com",
 				"port": "5432",
@@ -642,16 +642,16 @@
 		"postgres-jdbc-197061d5e98-4d030784e46fc8db": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
-			"name": "Cyber-Portal",
+			"name": "Cyber-Portal - Invoices",
 			"save-password": true,
-			"folder": "CyberOrigin",
+			"folder": "CyberTrace-Portal",
 			"configuration": {
 				"host": "localhost",
 				"port": "5432",
 				"database": "prod_cobchain",
 				"url": "jdbc:postgresql://localhost:5432/prod_cobchain",
 				"configurationType": "MANUAL",
-				"home": "/opt/homebrew/Cellar/libpq/17.4_1",
+				"home": "/opt/homebrew/Cellar/libpq/17.6",
 				"type": "dev",
 				"closeIdleConnection": true,
 				"properties": {
@@ -711,6 +711,42 @@
 					"sslTrustServerCertificate": "false"
 				},
 				"auth-model": "sqlserver_database"
+			}
+		},
+		"postgres-jdbc-19ad5680beb-7ccfc1237a23e0dd": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "Cyber-Portal LOCAL",
+			"save-password": true,
+			"folder": "CyberTrace-Portal",
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "portal_cobchain",
+				"url": "jdbc:postgresql://localhost:5432/portal_cobchain",
+				"configurationType": "MANUAL",
+				"home": "/opt/homebrew/Cellar/libpq/17.6",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"properties": {
+					"connectTimeout": "20",
+					"loginTimeout": "20",
+					"escapeSyntaxCallMode": "callIfNoReturn"
+				},
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-chosen-role@": "",
+					"@dbeaver-show-template-db@": "false",
+					"@dbeaver-show-unavailable-db@": "false",
+					"show-database-statistics": "false",
+					"@dbeaver-read-all-data-types-db@": "false",
+					"read-keys-with-columns": "false",
+					"replace-legacy-timezone": "false",
+					"@dbeaver-use-prepared-statements-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"auth-model": "native"
 			}
 		}
 	},

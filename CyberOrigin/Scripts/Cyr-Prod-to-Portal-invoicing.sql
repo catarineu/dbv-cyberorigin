@@ -28,8 +28,6 @@ SELECT max(date) FROM product_search_index psi WHERE date>='2025-05-01' AND supe
 SELECT max(date),count(*) FROM product_search_index psi WHERE superseded <> TRUE AND date>='2025-09-01';
 
 -- 1. TRASPAS psi (prod)
-SELECT * FROM product_search_index psi WHERE date>=now()-'4 months'::interval AND superseded <> TRUE;
-
 SELECT * FROM product_search_index psi WHERE date>='2025-01-01' AND superseded <> TRUE;
 -->> Exportar amb SQL i inserir a Portal.BD
 

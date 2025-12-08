@@ -5,13 +5,17 @@ SELECT * FROM product_search_index psi WHERE cyber_id ~ 'CYR01-22-0556-204036';
 
 
 -- *******************************************************************************
--- ************************************ STEPS ************************************
+-- ************************************ STATUS ************************************
 -- *******************************************************************************
 SELECT api_name, deleted, cancelled, cyber_id, cyber_id_group_id FROM cyber_id     WHERE cyber_id ~${cyber} ORDER BY id desc;
 SELECT superseded, cyber_id, cyber_id_group  FROM product_search_index psi WHERE cyber_id ~${cyber} ORDER BY id desc;
 
+-- *******************************************************************************
+-- ************************************ STEPS ************************************
+-- *******************************************************************************
+
 -- CYR01-23-0661-289946
-@set cyber = '25-0122-366280'
+@set cyber = 'CYR01-22-0742-240372'
 
 -- register_log: Últims STEPS. Principalment per veure darrers ERRORS de pas.
 	SELECT rl.id, blockchain, rl.timestamp, rl.step, rl.activity_name, -- api || ' v' || api_version AS api, blockchain,
@@ -39,7 +43,7 @@ SELECT * FROM workflows w ;
 -- *******************************************************************************
 -- ************************************ FIELDS ***********************************
 -- *******************************************************************************
-@set cyber = '24-0104'
+@set cyber = 'CYR01-24-0075-317988'
 
 -- DETALL de dades enviades en passos
  SELECT  timestamp, cyber_id, public_step, REPLACE(role_name,'Group','Start') AS role, KEY, value_convert_string AS value, LEFT(group_cyber_id,20) AS cyber_id, stakeholder_name_to_show,
